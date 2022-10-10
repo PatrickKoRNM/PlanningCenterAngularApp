@@ -29,8 +29,9 @@ export class AppComponent implements OnInit {
     const payload = new HttpParams()
       .append('grant_type', 'authorization_code')
       .append('code', code)
-      .append('redirect_uri', 'http://localhost:4200/oauth/callback')
-      .append('client_id', 'api');
+      .append('redirect_uri', `${PlanningCenterConfig.redirect_uri}`)
+      .append('client_id', `${PlanningCenterConfig.client_id}`)
+      .append('client_secret', `${PlanningCenterConfig.client_secret}`);
     this.http.post(`${PlanningCenterConfig.metadata?.token_endpoint}`, payload, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
